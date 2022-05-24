@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,18 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+
+form {
+  margin: 3rem auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  padding: 1rem;
+}
+
+form input {
+  margin: 1rem;
 }
