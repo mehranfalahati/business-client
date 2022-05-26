@@ -3,6 +3,7 @@ import { Component } from 'react';
 
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
+import Products from './components/product/Products';
 
 class App extends Component {
 
@@ -11,8 +12,30 @@ class App extends Component {
     error: "",
   }
 
+  // this.handleLogout = this.handleLogout.bind(this)
+
+  componentDidMount(){
+    let token = localStorage.getItem('token')
+    if(token){
+      fetch('http://localhost:3000/profile.json', {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      .then(response => response.json())
+      .then(result => {
+        if(result && result.id){
+          this.setState({
+            user: result
+          })
+        }
+      })
+    }
+  }
+
   signUp = user => {
-    fetch('http://localhost:3000/users', {
+    fetch('http://localhost:3000/users.json', {
       method: "POST",
       headers: {
           "Accept": "application/json",
@@ -32,7 +55,7 @@ class App extends Component {
   }
 
   signIn = (user) => {
-    fetch("http://localhost:3000/login", {
+    fetch("http://localhost:3000/login.json", {
         method: "POST",
         headers: {
             "Accept": "application/json",
@@ -61,13 +84,24 @@ class App extends Component {
     })
   }
 
+  handleLogout = () => {
+    localStorage.setItem('token', "")
+    this.setState({
+      loggedInStatus: "NOT_LOGGED_IN",
+      user: {}
+    })
+  }
+
+
+
   render() {
     return (
       <div className="App">
-        {this.state.user.username ? <h2>Welcome {this.state.user.first_name}</h2> : (
+        {this.state.user.username ? <h2>Welcome {this.state.user.first_name} <Products handleLogout={this.handleLogout}/></h2> : (
           <>
           <SignIn signIn={this.signIn} error={this.state.error} />
           <SignUp signUp={this.signUp} />
+          
           </>)
         }
       </div>

@@ -28,7 +28,7 @@ export default class SignIn extends Component {
                     <label>Password :</label>
                     <input type="password" name='password' value={this.state.password} onChange={this.handleChange}/>
                     {this.props.error ? <p style={{color: 'red'}}>{this.props.error}</p> : null}
-                    <input type="submit" value="Authenticate"/>
+                    <input type="submit" value="Sign In"/>
                 </form>
             </div>
         )
