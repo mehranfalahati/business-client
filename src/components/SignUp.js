@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class SignUp extends Component {
 
@@ -33,6 +34,7 @@ export default class SignUp extends Component {
                 <label>Last Name :</label>
                 <input name='lastName'  value={this.state.lastName} onChange={this.handleChange}/>
                 <input type='submit' value='Sign Up'/> 
+                <Link to='/'>Sign In</Link>
             </form>
         )
     }

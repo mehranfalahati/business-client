@@ -5,11 +5,15 @@ import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import Products from './components/product/Products';
 
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+
+
 class App extends Component {
 
   state = {
     user: {}, 
     error: "",
+    signup: true
   }
 
   // this.handleLogout = this.handleLogout.bind(this)
@@ -93,15 +97,19 @@ class App extends Component {
   }
 
 
-
   render() {
     return (
       <div className="App">
         {this.state.user.username ? <h2>Welcome {this.state.user.first_name} <Products handleLogout={this.handleLogout}/></h2> : (
           <>
-          <SignIn signIn={this.signIn} error={this.state.error} />
-          <SignUp signUp={this.signUp} />
-          
+            <Router>
+              <Routes>
+                <Route path='/signup' element={<SignUp signUp={this.signUp} />}/>
+                <Route path='/' element={<SignIn signIn={this.signIn} error={this.state.error} />}/>
+                {/* <SignIn signIn={this.signIn} error={this.state.error} /> */}
+                {/* <SignUp signUp={this.signUp} /> */}
+              </Routes>
+            </Router>
           </>)
         }
       </div>

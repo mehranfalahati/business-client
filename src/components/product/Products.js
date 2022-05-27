@@ -33,9 +33,11 @@ class Products extends Component {
     render() {
         return (
             <div>
+                <nav>
+                <button onClick={() => this.handleLogoutClick()}>Log Out</button>
+                </nav>
                 <h1>ALL PRODUCTS</h1>
                 <ProductList products={this.state.products}/>
-                <button onClick={() => this.handleLogoutClick()}>Log Out</button>
             </div>
         )
     }
@@ -44,7 +46,15 @@ class Products extends Component {
 const ProductList = (props) => {
     return (
         <div>
-            {props.products.map((p) => <p key={p.id}>{p.name}</p>)}
+            {props.products.map((p) => {
+                return(
+                    <div key={p.id}>
+                        <p>Name: {p.name}</p>
+                        <p>Details: {p.details}</p>
+                        <p>Price: ${p.price}</p>
+                    </div>
+                )
+            })}
         </div>
     )
 }
