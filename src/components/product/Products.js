@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 
 
-const SERVER_URL = 'http://localhost:3000/products.json'
+const SERVER_URL = 'https://giftshopserver.herokuapp.com/products.json'
 
 class Products extends Component {
     constructor () {
@@ -23,7 +23,7 @@ class Products extends Component {
     }
 
     handleLogoutClick() {
-        axios.delete("http://localhost:3000/logout.json").then(response => {
+        axios.delete("https://giftshopserver.herokuapp.com/logout.json").then(response => {
             this.props.handleLogout();
         }).catch(error => {
             console.log("logout error", error)
@@ -49,6 +49,7 @@ const ProductList = (props) => {
             {props.products.map((p) => {
                 return(
                     <div key={p.id}>
+                        <img src={p.URL}/>
                         <p>Name: {p.name}</p>
                         <p>Details: {p.details}</p>
                         <p>Price: ${p.price}</p>

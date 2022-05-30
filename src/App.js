@@ -21,7 +21,7 @@ class App extends Component {
   componentDidMount(){
     let token = localStorage.getItem('token')
     if(token){
-      fetch('http://localhost:3000/profile.json', {
+      fetch('https://giftshopserver.herokuapp.com/profile.json', {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`
@@ -39,7 +39,7 @@ class App extends Component {
   }
 
   signUp = user => {
-    fetch('http://localhost:3000/users.json', {
+    fetch('https://giftshopserver.herokuapp.com/users.json', {
       method: "POST",
       headers: {
           "Accept": "application/json",
@@ -59,7 +59,7 @@ class App extends Component {
   }
 
   signIn = (user) => {
-    fetch("http://localhost:3000/login.json", {
+    fetch("https://giftshopserver.herokuapp.com/login.json", {
         method: "POST",
         headers: {
             "Accept": "application/json",
