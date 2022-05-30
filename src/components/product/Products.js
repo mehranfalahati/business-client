@@ -49,7 +49,7 @@ const ProductList = (props) => {
             {props.products.map((p) => {
                 return(
                     <div key={p.id}>
-                        <img src={p.URL}/>
+                        <img src={p.URL} alt="images"/>
                         <p>Name: {p.name}</p>
                         <p>Details: {p.details}</p>
                         <p>Price: ${p.price}</p>
