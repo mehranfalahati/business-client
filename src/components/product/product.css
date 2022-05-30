@@ -1,0 +1,31 @@
+.container {
+    background-color: blue;
+}
+
+.div-container {
+    max-width: 960px;
+    text-align: center;
+    margin: auto;
+}
+
+.img {
+    height: 250px;
+}
+
+.product {
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+    text-align: center;
+    margin: 1em;
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+    border-radius: 1em;
+}
+
+.div-product {
+    text-align: center;
+}
+
+.nav {
+    text-align: left;
+}

@@ -17,20 +17,21 @@ export default class SignIn extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         this.props.signIn(this.state)
+        window.location.hash="/products"
     }
 
     render() {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <h1>Sign In Form</h1>
+                    <h1>Sign In</h1>
                     <label>Username :</label>
                     <input name='username' value={this.state.username} onChange={this.handleChange}/>
                     <label>Password :</label>
                     <input type="password" name='password' value={this.state.password} onChange={this.handleChange}/>
                     {this.props.error ? <p style={{color: 'red'}}>{this.props.error}</p> : null}
                     <input type="submit" value="Sign In"/>
-                    <Link to='/signup'>Sign up</Link>
+                    Don't you have an account?<Link to='/signup'>Sign up</Link>
                 </form>
             </div>
         )

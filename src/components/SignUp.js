@@ -24,7 +24,7 @@ export default class SignUp extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <h1>Sign Up Form</h1>
+                <h1>Sign Up</h1>
                 <label>Username :</label>
                 <input name='username' value={this.state.username} onChange={this.handleChange}/>
                 <label>Password :</label>
@@ -34,7 +34,7 @@ export default class SignUp extends Component {
                 <label>Last Name :</label>
                 <input name='lastName'  value={this.state.lastName} onChange={this.handleChange}/>
                 <input type='submit' value='Sign Up'/> 
-                <Link to='/'>Sign In</Link>
+                Already a member?<Link to='/'>Sign In</Link>
             </form>
         )
     }

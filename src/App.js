@@ -5,7 +5,9 @@ import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import Products from './components/product/Products';
 
+
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import Buy from './components/buy/Buy';
 
 
 class App extends Component {
@@ -74,10 +76,12 @@ class App extends Component {
     })
     .then(response => response.json())
     .then(result => {
+      console.log(result)
         if (result.token){
         localStorage.setItem('token', result.token)
         this.setState({
-            user: result.user
+            user: result.user,
+            loggedInStatus: "LOGGED_IN"
             })
         }
         else {
@@ -85,7 +89,9 @@ class App extends Component {
                 error: result.error
             })
         }
+        window.location.hash="/products"
     })
+    
   }
 
   handleLogout = () => {
@@ -94,24 +100,25 @@ class App extends Component {
       loggedInStatus: "NOT_LOGGED_IN",
       user: {}
     })
+    window.location.hash="/"
   }
 
 
   render() {
     return (
       <div className="App">
-        {this.state.user.username ? <h2>Welcome {this.state.user.first_name} <Products handleLogout={this.handleLogout}/></h2> : (
+        <Router>
           <>
-            <Router>
               <Routes>
                 <Route path='/signup' element={<SignUp signUp={this.signUp} />}/>
                 <Route path='/' element={<SignIn signIn={this.signIn} error={this.state.error} />}/>
+                <Route path='/products' element={<Products handleLogout={this.handleLogout} loggedInStatus={this.state.loggedInStatus}/>}/>
+                <Route path='/buy' element={<Buy/>} />
                 {/* <SignIn signIn={this.signIn} error={this.state.error} /> */}
                 {/* <SignUp signUp={this.signUp} /> */}
               </Routes>
-            </Router>
-          </>)
-        }
+          </>
+        </Router>
       </div>
     );
   } 
