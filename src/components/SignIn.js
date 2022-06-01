@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { Link } from 'react-router-dom'
+import './signin.css'
 
 export default class SignIn extends Component {
 
@@ -22,7 +23,7 @@ export default class SignIn extends Component {
 
     render() {
         return (
-            <div>
+            <div className='signin-container'>
                 <form onSubmit={this.handleSubmit}>
                     <h1>Sign In</h1>
                     <label>Username :</label>
@@ -31,7 +32,7 @@ export default class SignIn extends Component {
                     <input type="password" name='password' value={this.state.password} onChange={this.handleChange}/>
                     {this.props.error ? <p style={{color: 'red'}}>{this.props.error}</p> : null}
                     <input type="submit" value="Sign In"/>
-                    Don't you have an account?<Link to='/signup'>Sign up</Link>
+                    Don't you have an account?<Link to='/signup' className='link'>Sign up</Link>
                 </form>
             </div>
         )
