@@ -5,6 +5,9 @@ This is the front-end of the business that all customers can see this page and c
 
 Live Demo: [Business-client](https://giftshopmelbourne.netlify.app/)
 
+Username: test
+Password: chicken
+
 ### How to get start
 in the Directory run the following commands:
 ```

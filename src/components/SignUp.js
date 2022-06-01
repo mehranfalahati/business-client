@@ -20,6 +20,7 @@ export default class SignUp extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         this.props.signUp(this.state) 
+        window.location.hash="/products"
     }
 
     render() {
